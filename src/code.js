@@ -1,0 +1,4 @@
+module.exports = {
+	SERVER_START_FAILED: 1,
+	BACKEND_LOAD_FAILED: 2
+};
