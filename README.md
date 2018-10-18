@@ -1,12 +1,13 @@
-StatsD [![Build Status][travis-ci_status_img]][travis-ci_statsd]
+StatsD
 ======
 
-A network daemon that runs on the [Node.js][node] platform and
-listens for statistics, like counters and timers, sent over [UDP][udp] or
-[TCP][tcp] and sends aggregates to one or more pluggable backend services (e.g.,
-[Graphite][graphite]).
+This is a fork of [Etsy's StatsD][base-statsd].
 
-We ([Etsy][etsy]) [blogged][blog post] about how it works and why we created it.
+A network daemon that runs on the [Node.js][node] platform and
+listens for statistics, like counters and timers, sent over [UDP][udp]
+and sends aggregates to one or more pluggable backend services.
+
+[Etsy][etsy] [blogged][blog post] about how it works and why they created it.
 
 Inspiration
 -----------
@@ -37,11 +38,12 @@ general values should be integer.
 Installation and Configuration
 ------------------------------
 
- * Install node.js
- * Clone the project
- * Create a config file from `exampleConfig.js` and put it somewhere
- * Start the Daemon:  
-   `node stats.js /path/to/config`
+* Install node.js
+* Clone the project
+* Create a config file that conforms to the schema described in
+	`schema/config.json`
+* Start the Daemon:  
+	`node stats.js /path/to/config`
 
 Usage
 -------
@@ -97,6 +99,7 @@ Meta
 
 
 
+[base-statsd]: https://github.com/etsy/statsd/
 [graphite]: http://graphite.readthedocs.org/
 [etsy]: http://www.etsy.com
 [blog post]: http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/

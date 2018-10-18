@@ -1,0 +1,54 @@
+{
+	"title": "Config schema",
+	"type": "object",
+	"properties": {
+		"server": {
+			"description": "The server protocol",
+			"type": "string",
+			"enum": ["udp"],
+			"default": "udp"
+		},
+		"port": {
+			"description": "Port to listen",
+			"type": "number",
+			"default": 8152
+		},
+		"prefixStats": {
+			"description": "The prefix for statsd internal statistics",
+			"type": "string",
+			"default": "statsd"
+		},
+		"logger": {
+			"description": "Logger parameter. See node-bunyan for more info.",
+			"type": "object",
+			"properties": {
+				"streams": {
+					"description": "The logger streams",
+					"type": "array"
+				},
+				"level": {
+					"description": "Log level",
+					"type": "string"
+				}
+			}
+		},
+		"flushInterval": {
+			"type": "number"
+		},
+		"backends": {
+			"description": "Backends to use",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"deleteIdleStats": {
+			"type": "boolean",
+			"default": false
+		},
+		"keyNameSanitize": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

@@ -9,7 +9,8 @@ module.exports = {
 		if (!cache[name]) {
 			cache[name] = Bunyan.createLogger({
 				name,
-				streams: config.streams
+				streams: config.streams,
+				level: config.level
 			});
 		}
 		return cache[name];
