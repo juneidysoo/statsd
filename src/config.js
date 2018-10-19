@@ -14,14 +14,12 @@ const conf = Object.assign(
 		keyNameSanitize: true
 	},
 	require(path.resolve(configFile)),
-	{
-		startupTime: Date.now()
-	}
+	{ startupTime: Date.now() }
 );
 
-const assignDefault = (key, d) => {
-	if (conf[key] === undefined) {
-		conf[key] = d;
+const assignDefault = (k, d) => {
+	if (conf[k] === undefined) {
+		conf[k] = d;
 	}
 };
 

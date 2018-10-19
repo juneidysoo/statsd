@@ -1,13 +1,10 @@
 const Gauges = require('./Gauges');
 /**
- * @class
- * @extends Gauges
+ * @class model.Counters
+ * @extends model.Gauges
  * Maintain counts.
  */
 class Counters extends Gauges {
-	/**
-	 * @constructor
-	 */
 	constructor () {
 		super();
 		this.count = this.gauge;
@@ -17,8 +14,7 @@ class Counters extends Gauges {
 	 * @param {String} key
 	 */
 	increment (key) {
-		this.init(key);
-		this.gauges[key]++;
+		this.count(key, 1);
 	}
 	/**
 	 * Clear the counters.

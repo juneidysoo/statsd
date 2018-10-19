@@ -8,18 +8,9 @@ const notFound = { init () {} };
  */
 function load (name) {
 	let backend;
-	try {
-		backend = require(`./${name}`);
-	} catch (e) {
-		// Noop
-	}
-
+	try { backend = require(`./${name}`); } catch (e) {/*noop*/}
 	if (!backend) {
-		try {
-			backend = require(name);
-		} catch (e) {
-			// Noop
-		}
+		try { backend = require(name); } catch (e) {/*noop*/}
 	}
 	return backend || notFound;
 }
@@ -27,14 +18,14 @@ function load (name) {
 module.exports = {
 	/**
 	 * Helper to load backend.
-	 * @param {EventEmitter} backendEvents
+	 * @param {EventEmitter} events
 	 */
-	load: function startBackend (backendEvents) {
+	load: function startBackend (events) {
 		const backends = config.get('backends');
 
 		const results = backends.map(backend => {
 			logger.trace('Loading %s backend', backend);
-			const b = load(backend).init(config, logger, backendEvents);
+			const b = load(backend).init(config, logger, events);
 			if (b) {
 				logger.trace('Started %s backend', backend);
 			} else {
