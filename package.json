@@ -5,7 +5,7 @@
 	"author": {
 		"name": "Juneidy"
 	},
-	"license" : "MIT",
+	"license": "MIT",
 	"homepage": "https://github.com/juneidysoo/statsd",
 	"bugs": "https://github.com/juneidysoo/statsd/issues",
 	"keywords": [
@@ -20,7 +20,7 @@
 		"url": "https://github.com/juneidysoo/statsd.git"
 	},
 	"engines": {
-		"node" : ">=8"
+		"node": ">=8"
 	},
 	"dependencies": {
 		"bunyan": "latest"

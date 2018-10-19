@@ -1,0 +1,11 @@
+{
+	"backends": [],
+	"deleteIdleStats": true,
+	"logger": {
+		"streams": [{
+			"path": "/dev/stdout"
+		}],
+		"level": "warn"
+	},
+	"flushInterval": 30000
+}

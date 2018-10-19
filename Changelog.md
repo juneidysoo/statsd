@@ -2,12 +2,15 @@
 
 ## v1.0.0 (TBA)
 - Refactored the entire base code
+- Using `node-bunyan` logger
 
 ### Breaking Changes
 - Many things have not been migrated yet. Including but not limited to:
 	- `udp6` and `tcp` server
 	- All backends
 	- histogram
+- Backend's `#init` interface have been changed
+- Config structure have been changed. See `schema/config.json`
 
 ## v0.8.0 (05/05/2016)
 - Modularized injest servers, with support for loading multiple servers

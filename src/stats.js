@@ -35,6 +35,12 @@ function getFlushTimeout () {
 	return flushInterval - (Date.now() - startupTime) % flushInterval;
 }
 
+function initCounter () {
+	counters.reset(internal.badLines);
+	counters.reset(internal.packets);
+	counters.reset(internal.metrics);
+}
+
 function sanitizeKeyName (key) {
 	if (keyNameSanitize) {
 		return key
@@ -192,9 +198,7 @@ function flushMetrics () {
 	backendEvents.once('flush', function clearMetrics () {
 		// Clear the counters
 		counters.clear(config.get('deleteCounters'));
-		counters.reset(internal.badLines);
-		counters.reset(internal.packets);
-		counters.reset(internal.metrics);
+		initCounter();
 
 		// Clear the timers
 		if (config.get('deleteTimers')) {
@@ -233,5 +237,6 @@ function flushMetrics () {
 
 server.start(handlePacket);
 backend.load(backendEvents);
+initCounter();
 
 setTimeout(flushMetrics, getFlushTimeout());

@@ -1,3 +1,5 @@
+const path = require('path');
+
 const [,,configFile] = process.argv;
 
 const conf = Object.assign(
@@ -11,7 +13,7 @@ const conf = Object.assign(
 		deleteIdleStats: false,
 		keyNameSanitize: true
 	},
-	require(configFile),
+	require(path.resolve(configFile)),
 	{
 		startupTime: Date.now()
 	}
