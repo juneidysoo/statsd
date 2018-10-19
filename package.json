@@ -30,6 +30,6 @@
 	},
 	"scripts": {
 		"test": "./run_tests.sh",
-		"start": "node stats.js config.js"
+		"start": "node src/main.js config.json"
 	}
 }

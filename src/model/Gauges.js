@@ -1,16 +1,13 @@
 /**
- * @class
+ * @class model.Gauges
  * Maintain gauges.
  */
 class Gauges {
-	/**
-	 * Key-value pair that stores the gauge.
-	 * @property {Object.<String, Number>} gauges
-	 */
-	/**
-	 * @constructor
-	 */
 	constructor () {
+		/**
+		 * Key-value pair that stores the gauge.
+		 * @property {Object.<String, Number>} gauges
+		 */
 		this.gauges = {};
 	}
 	/**
@@ -22,6 +19,7 @@ class Gauges {
 	}
 	/**
 	 * Initialise the key if not.
+	 * @param {String} key
 	 */
 	init (key) {
 		if (typeof this.gauges[key] !== 'number') {
@@ -36,14 +34,6 @@ class Gauges {
 	gauge (key, count) {
 		this.init(key);
 		this.gauges[key] += count;
-	}
-	/**
-	 * Increment count by 1.
-	 * @param {String} key
-	 */
-	increment (key) {
-		this.init(key);
-		this.gauges[key]++;
 	}
 	/**
 	 * Clear the gauges.
@@ -68,6 +58,7 @@ class Gauges {
 	/**
 	 * Get the value of specified key.
 	 * @param {String} key
+	 * @return {Number}
 	 */
 	get (key) {
 		return this.gauges[key];

@@ -8,17 +8,9 @@ const notFound = { start () {} };
  */
 function load (name) {
 	let server;
-	try {
-		server = require(`./${name}`);
-	} catch (e) {
-		// Noop
-	}
+	try { server = require(`./${name}`); } catch (e) {/*noop*/}
 	if (!server) {
-		try {
-			server = require(name);
-		} catch (e) {
-			// Noop
-		}
+		try { server = require(name); } catch (e) {/*noop*/}
 	}
 	return server || notFound;
 }
@@ -28,7 +20,7 @@ module.exports = {
 	 * Helper to start server.
 	 * @param {Function} callback
 	 */
-	start: function startServer (callback) {
+	start (callback) {
 		const server = config.get('server');
 		logger.trace('Loading %s server', server);
 		const s = load(server).start(config, logger, callback);
