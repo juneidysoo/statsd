@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.0 (TBA)
+## v1.0.0-alpha.1 (2018/10/19)
 - Refactored the entire base code
 - Using `node-bunyan` logger
 
