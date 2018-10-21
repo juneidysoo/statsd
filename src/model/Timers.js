@@ -29,6 +29,7 @@ class Timers {
 		if (!Array.isArray(this.timers[key])) {
 			this.timers[key] = [];
 		}
+		this.counters.init(key);
 	}
 	/**
 	 * Record a timer.
@@ -39,7 +40,7 @@ class Timers {
 	record (key, value, sampleRate) {
 		this.init(key);
 		this.timers[key].push(value);
-		this.counters.count(key, 1 / sampleRate);
+		this.counters.count(key, 1, sampleRate);
 	}
 	/**
 	 * Clear the timers.

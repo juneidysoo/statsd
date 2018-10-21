@@ -29,11 +29,11 @@ class Gauges {
 	/**
 	 * Update gauge.
 	 * @param {String} key
-	 * @param {Number} count
+	 * @param {Number} val
 	 */
-	gauge (key, count) {
+	gauge (key, val) {
 		this.init(key);
-		this.gauges[key] += count;
+		this.gauges[key] += val;
 	}
 	/**
 	 * Clear the gauges.

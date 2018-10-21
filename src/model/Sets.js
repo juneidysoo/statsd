@@ -14,7 +14,7 @@ class Sets {
 	 * @inheritdoc model.Gauges#reset
 	 */
 	reset (key) {
-		this.sets[key].reset();
+		this.sets[key].clear();
 	}
 	/**
 	 * @inheritdoc model.Gauges#init
@@ -47,6 +47,14 @@ class Sets {
 				this.reset(key);
 			}
 		}
+	}
+	/**
+	 * Get the value of specified key.
+	 * @param {String} key
+	 * @return {Set}
+	 */
+	get (key) {
+		return this.sets[key];
 	}
 	/**
 	 * Get raw sets.
