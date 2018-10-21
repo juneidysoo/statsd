@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.0-alpha.3 (2018/10/21)
+- Refactored most of the code
+- Added test
+- Fixed a few bugs
+### Breaking Changes
+- `config.deleteIdleStats` now defaults to `true`
+
 ## v1.0.0-alpha.1 (2018/10/19)
 - Refactored the entire base code
 - Using `node-bunyan` logger

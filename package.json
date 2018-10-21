@@ -1,6 +1,6 @@
 {
 	"name": "statsd",
-	"version": "1.0.0-alpha.2",
+	"version": "1.0.0-alpha.3",
 	"description": "Network daemon for the collection and aggregation of realtime application metrics",
 	"author": {
 		"name": "Juneidy"
