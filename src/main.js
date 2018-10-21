@@ -9,3 +9,4 @@ statistics.init();
 server.start(statistics.getPacketHandler());
 // Load backend
 backend.load(statistics.getEventEmitter());
+statistics.start();

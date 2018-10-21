@@ -89,27 +89,35 @@ class Statistics {
 
 		const [, k, val, type, r] = result;
 
-		const rate = r === undefined ? [] : r.exec(Statistics.rateRegex);
-
-		if (rate == null) { return; } // Doesn't match, bail
+		let sampleRate = 1;
+		if (typeof r === 'string') {
+			if (r.length > 1 && r[0] === '@') {
+				sampleRate = Number(r.substring(1));
+				if (isNaN(sampleRate) || sampleRate < 0) {
+					return;
+				}
+			} else {
+				return;
+			}
+		}
 
 		const key = keyNameSanitize ? Statistics.sanitizeKeyName(k) : k;
 
-		const sampleRate = rate[1] || 1;
-
 		if (type === 'ms') {
 			const value = Number(val);
-			if (value < 0) {
-				return;
-			}
+			if (isNaN(value) || value < 0) return;
 			this.timers.record(key, value, sampleRate);
 		} else if (type === 'c') {
-			this.counters.count(key, Number(val || 1) * (1 / sampleRate));
+			const value = Number(val || 1);
+			if (isNaN(value)) return;
+			this.counters.count(key, value, sampleRate);
 		} else if (type === 'h') {
 			logger.error('Histogram is not supported yet!');
 			return;
 		} else if (type === 'g') {
-			this.gauges.gauge(key, Number(val));
+			const value = Number(val);
+			if (isNaN(value)) return;
+			this.gauges.gauge(key, value);
 		} else if (type === 's') {
 			this.sets.add(key, val);
 		}
@@ -164,7 +172,6 @@ class Statistics {
 	}
 }
 
-Statistics.tokenRegex = /^([^:]+):([+-]?\d+)\|(ms|c|h|g|s)(?:\|(.+))?$/;
-Statistics.rateRegex = /^@(\d+.\d+)$/;
+Statistics.tokenRegex = /^([^:]+):([^|]+)\|(ms|c|h|g|s)(?:\|(.+))?$/;
 
 module.exports = Statistics;

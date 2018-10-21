@@ -14,6 +14,7 @@ const startupTime = config.get('startupTime');
  */
 
 const st = {
+	flushInterval,
 	/**
 	 * Initialise the statistics.
 	 */
@@ -21,6 +22,8 @@ const st = {
 		st.stats = new Statistics();
 		st.events = new EventEmitter();
 		st.oldTs = 0;
+	},
+	start () {
 		setTimeout(st.flushMetrics, st.getFlushTimeout());
 	},
 	/**
@@ -42,7 +45,7 @@ const st = {
 	 * @return {Number}
 	 */
 	getFlushTimeout () {
-		return flushInterval - (Date.now() - startupTime) % flushInterval;
+		return st.flushInterval - (Date.now() - startupTime) % st.flushInterval;
 	},
 	/**
 	 * Get aggregate metrics.
@@ -56,7 +59,7 @@ const st = {
 
 		for (const key in counters) {
 			// calculate "per second" rate
-			counterRates[key] = counters[key] / (flushInterval / 1000);
+			counterRates[key] = counters[key] / (st.flushInterval / 1000);
 		}
 
 		for (const key in timers) {
@@ -99,7 +102,7 @@ const st = {
 						upper: max,
 						lower: min,
 						count: timerCounters[key],
-						count_ps: timerCounters[key] / (flushInterval / 1000),
+						count_ps: timerCounters[key] / (st.flushInterval / 1000),
 						sum,
 						sum_squares: sumSquares,
 						mean,
@@ -128,7 +131,7 @@ const st = {
 	flushMetrics () {
 		const ts = Date.now();
 		if (st.oldTs > 0) {
-			st.stats.gaugeTsLag(ts - st.oldTs - flushInterval);
+			st.stats.gaugeTsLag(ts - st.oldTs - st.flushInterval);
 		}
 		st.oldTs = ts;
 
@@ -144,12 +147,8 @@ const st = {
 		// - https://github.com/etsy/statsd/pull/575
 		// - https://github.com/etsy/statsd/issues/574
 		// for more details.
-		setTimeout(st.flushMetrics, st.getFlushTimeout());
+		st.start();
 	}
 };
 
-module.exports = {
-	init: st.init,
-	getPacketHandler: st.getPacketHandler,
-	getEventEmitter: st.getEventEmitter
-};
+module.exports = st;

@@ -5,9 +5,14 @@ const Gauges = require('./Gauges');
  * Maintain counts.
  */
 class Counters extends Gauges {
-	constructor () {
-		super();
-		this.count = this.gauge;
+	/**
+	 * Count with sample rate.
+	 * @param {String} key
+	 * @param {Number} count
+	 * @param {Number} rate
+	 */
+	count (key, count, rate) {
+		this.gauge(key, count / rate);
 	}
 	/**
 	 * Increment count by 1.

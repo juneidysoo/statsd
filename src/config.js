@@ -10,7 +10,7 @@ const conf = Object.assign(
 		logger: {},
 		flushInterval: 10000,
 		backends: [],
-		deleteIdleStats: false,
+		deleteIdleStats: true,
 		keyNameSanitize: true
 	},
 	require(path.resolve(configFile)),

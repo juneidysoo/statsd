@@ -25,11 +25,16 @@
 	"dependencies": {
 		"bunyan": "latest"
 	},
+	"devDependencies": {
+		"eslint": "latest",
+		"mocha": "latest"
+	},
 	"bin": {
 		"statsd": "./bin/statsd"
 	},
 	"scripts": {
-		"test": "./run_tests.sh",
+		"check": "eslint src/ test/",
+		"test": "mocha $(find test/ -name *.js)",
 		"start": "node src/main.js config.json"
 	}
 }
