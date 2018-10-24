@@ -1,10 +1,9 @@
 {
-	"backends": [],
+	"backends": ["graphite"],
 	"logger": {
 		"streams": [{
 			"path": "/dev/stdout"
 		}],
 		"level": "warn"
-	},
-	"flushInterval": 30000
+	}
 }
