@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.0-alpha.4 (2018/10/24)
+- Fixed a few issues where internal stats counter resulted in `NaN` - Fixed in
+  #5
+- Added graphite backend & test
+
 ## v1.0.0-alpha.3 (2018/10/21)
 - Refactored most of the code
 - Added test
