@@ -28,7 +28,7 @@ describe(__filename, () => {
 		it('Empty timers', () => {
 			stats.timers.init('foo');
 			const m = statistics.aggregate();
-			assert.equal(m.counter_rates['foo'], 0);
+			assert.equal(m.counter_rates['foo'], void 0);
 		});
 		it('Single time', () => {
 			stats._insert('foo:100|ms');

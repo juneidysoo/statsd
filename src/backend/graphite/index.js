@@ -62,10 +62,6 @@ const conf = {
 	 */
 	legacyNamespace: true,
 	/**
-	 * @cfg {String} [prefixStats='statsd']
-	 */
-	prefixStats: 'statsd',
-	/**
 	 * @cfg {Boolean} [flushCounts=true]
 	 */
 	flushCounts: true
@@ -150,12 +146,14 @@ function flushStats (ts, metrics) {
 		statsd_metrics
 	} = metrics;
 
+	l.trace('Flushing', metrics);
+
 	let numStats = 0;
 
 	// Flatten all the different types of metrics into a single
 	// collection so we can allow serialization to either the graphite
 	// text and pickle formats.
-	const stats = new Stats(ts, conf.globalSuffix);
+	const stats = new Stats(ts, conf.globalSuffix, l);
 
 	for (const key in counters) {
 		const namespace = ns.counter.concat(sk(key));
@@ -220,10 +218,6 @@ module.exports = {
 
 		Object.assign(conf, config.get('graphite'));
 
-		// In order to unconditionally add this string, it either needs to be an
-		// empty string if it was unset, OR prefixed by a . if it was set.
-		conf.globalSuffix = conf.globalSuffix && (`.${conf.globalSuffix}`);
-
 		if (conf.globalPrefix) {
 			Object.values(ns)
 			.forEach(v => v.push(conf.globalPrefix));
@@ -249,7 +243,8 @@ module.exports = {
 			conf,
 			{
 				keySanitized: config.get('keyNameSanitize'),
-				flushInterval: config.get('flushInterval')
+				flushInterval: config.get('flushInterval'),
+				prefixStats: config.get('prefixStats')
 			}
 		);
 

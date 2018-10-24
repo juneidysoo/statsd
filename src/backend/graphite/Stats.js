@@ -10,10 +10,11 @@ class Stats {
 	 * @param {Number} ts The timestamp.
 	 * @param {String} globalSuffix
 	 */
-	constructor (ts, globalSuffix) {
+	constructor (ts, globalSuffix, logger) {
 		this.metrics = [];
 		this.ts = ts;
 		this.globalSuffix = globalSuffix;
+		this.logger = logger;
 	}
 
 	/**
@@ -23,6 +24,7 @@ class Stats {
 	 * @param {Number} [ts] Optional timestamp override.
 	 */
 	add (key, val, ts) {
+		this.logger.trace('Adding graphite entry:', key, val);
 		this.metrics.push(
 			new Metric(
 				key.join('.') + (this.globalSuffix ? `.${this.globalSuffix}` : ''),

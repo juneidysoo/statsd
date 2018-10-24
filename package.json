@@ -27,7 +27,8 @@
 	},
 	"devDependencies": {
 		"eslint": "latest",
-		"mocha": "latest"
+		"mocha": "latest",
+		"rimraf": "latest"
 	},
 	"bin": {
 		"statsd": "./bin/statsd"

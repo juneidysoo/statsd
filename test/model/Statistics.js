@@ -47,6 +47,11 @@ describe(__filename, () => {
 					assert.ok(!s._insert(`foo:345345|ms|${rate}`), rate);
 				});
 			});
+
+			it('Increment bad lines', () => {
+				s.insert('foo:bar');
+				assert.equal(s.counters.get(s.internal.badLines), 1);
+			});
 		});
 
 		describe('Valid', () => {

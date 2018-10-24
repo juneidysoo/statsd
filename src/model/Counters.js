@@ -11,7 +11,7 @@ class Counters extends Gauges {
 	 * @param {Number} count
 	 * @param {Number} rate
 	 */
-	count (key, count, rate) {
+	count (key, count, rate = 1) {
 		this.gauge(key, count / rate);
 	}
 	/**
