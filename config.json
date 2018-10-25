@@ -1,5 +1,4 @@
 {
-	"backends": ["graphite"],
 	"logger": {
 		"streams": [{
 			"path": "/dev/stdout"
