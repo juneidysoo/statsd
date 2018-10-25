@@ -1,0 +1,10 @@
+node_modules
+Changelog.md
+config.json
+CONTRIBUTING.md
+docs
+examples
+schema
+test
+.eslintrc
+.travis.yml

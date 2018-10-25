@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.0.0 (2018/10/25)
+- Updated and removed some documentations on features that are not yet migrated.
+
 ## v1.0.0-alpha.4 (2018/10/24)
 - Fixed a few issues where internal stats counter resulted in `NaN` - Fixed in
   #5
