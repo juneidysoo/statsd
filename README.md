@@ -1,4 +1,4 @@
-# StatsD
+# StatsD [![Build Status][travisci-status]][travisci]
 This is a fork of [Etsy's StatsD][base-statsd].
 
 A network daemon that runs on the [Node.js][node] platform and
@@ -69,6 +69,8 @@ possible to encounter a stuck state.
 
 Tests can be executed with `npm test`.
 
+[travisci-status]: https://api.travis-ci.org/juneidysoo/statsd.svg?branch=master
+[travisci]: https://travis-ci.org/juneidysoo/statsd
 [base-statsd]: https://github.com/etsy/statsd/
 [node]: http://nodejs.org
 [udp]: http://en.wikipedia.org/wiki/User_Datagram_Protocol
