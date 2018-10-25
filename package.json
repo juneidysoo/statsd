@@ -34,7 +34,7 @@
 		"statsd": "./bin/statsd"
 	},
 	"scripts": {
-		"check": "eslint src/ test/",
+		"lint": "eslint src/ test/",
 		"test": "mocha $(find test/ -name *.js)",
 		"start": "node src/main.js config.json"
 	}
