@@ -9,7 +9,7 @@ const conf = Object.assign(
 		prefixStats: 'statsd',
 		logger: {},
 		flushInterval: 10000,
-		backends: [],
+		backends: ['graphite'],
 		deleteIdleStats: true,
 		keyNameSanitize: true
 	},

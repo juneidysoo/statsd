@@ -52,11 +52,8 @@ StatsD running with the default UDP server on localhost would be:
 * [Graphite Integration][docs_graphite]
 * [Supported Servers][docs_server]
 * [Supported Backends][docs_backend]
-* [Admin TCP Interface][docs_admin_interface]
 * [Server Interface][docs_server_interface]
 * [Backend Interface][docs_backend_interface]
-* [Metric Namespacing][docs_namespacing]
-* [StatsD Cluster Proxy][docs_cluster_proxy]
 
 ## Debugging
 The only way to debug StatsD is through logs.
@@ -87,10 +84,7 @@ Tests can be executed with `npm test`.
 [docs_graphite]: ./docs/graphite.md
 [docs_server]: ./docs/server.md
 [docs_backend]: ./docs/backend.md
-[docs_admin_interface]: ./docs/admin_interface.md
 [docs_server_interface]: ./docs/server_interface.md
 [docs_backend_interface]: ./docs/backend_interface.md
-[docs_namespacing]: ./docs/namespacing.md
-[docs_cluster_proxy]: ./docs/cluster_proxy.md
 
 [mocha]: https://mochajs.org/
